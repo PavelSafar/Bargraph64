@@ -1,0 +1,9 @@
+Removed Pin From Net: NetName=GND Pin=IC1-41
+Added Component: Designator=SB5(SB0603)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Panasonic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "ERA3AEB102V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=GND Pin=SB5-1
+Added Pin To Net: NetName=NetIC1_41 Pin=IC1-41
+Added Pin To Net: NetName=NetIC1_41 Pin=SB5-2
+Added Net: Name=NetIC1_41
+Added Member To Class: ClassName=Bargraph_64_MCU Member=Component SB5 0R

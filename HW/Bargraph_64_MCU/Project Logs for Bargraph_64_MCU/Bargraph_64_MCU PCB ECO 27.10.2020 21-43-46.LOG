@@ -1,0 +1,82 @@
+Added Component: Designator=U2(dip8_smd)
+Add component (AddParameter): Name = "Category"; Value = "Isolators"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - DC Forward (If) (Max)"; Value = "50mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Output / Channel"; Value = "50mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Transfer Ratio (Max)"; Value = "600%@5mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Transfer Ratio (Min)"; Value = "300%@5mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://www.fairchildsemi.com/datasheets/FO/FOD817D.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Rev. 2.8, 11/2015"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Family"; Value = "Optoisolators-Transistor,PhotovoltaicOutput"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Input Type"; Value = "DC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Fairchild Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "https://www.fairchildsemi.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "SurfaceMount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = "SurfaceMount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Channels"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Online Catalog"; Value = "FOD617,814,817Series"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C~110°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Other Names"; Value = "FOD817DSDDKR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Output Type"; Value = "Transistor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "4-SMD,GullWing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "4-Pin Surface Mount Device, Body 6.5 x 4.6 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "MDIP 4L"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package URL"; Value = "https://www.fairchildsemi.com/package-drawings/N0/N04C.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Version"; Value = "10/2014"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Digi-Reel®  "; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rise / Fall Time (Typ)"; Value = "4µs,3µs"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Series"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Standard Package"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Device Package"; Value = "4-SMD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Turn On / Turn Off Time (Typ)"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vce Saturation (Max)"; Value = "200mV"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Forward (Vf) (Typ)"; Value = "1.2V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Isolation"; Value = "5000Vrms"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Output (Max)"; Value = "70V"; VariantName = "[No Variations]"
+Added Component: Designator=U3(dip8_smd)
+Add component (AddParameter): Name = "Category"; Value = "Isolators"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - DC Forward (If) (Max)"; Value = "50mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current - Output / Channel"; Value = "50mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Transfer Ratio (Max)"; Value = "600%@5mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Current Transfer Ratio (Min)"; Value = "300%@5mA"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet URL"; Value = "https://www.fairchildsemi.com/datasheets/FO/FOD817D.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Datasheet Version"; Value = "Rev. 2.8, 11/2015"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Family"; Value = "Optoisolators-Transistor,PhotovoltaicOutput"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Input Type"; Value = "DC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer"; Value = "Fairchild Semiconductor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Manufacturer URL"; Value = "https://www.fairchildsemi.com/"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Technology"; Value = "SurfaceMount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Mounting Type"; Value = "SurfaceMount"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Number of Channels"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Online Catalog"; Value = "FOD617,814,817Series"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Operating Temperature"; Value = "-55°C~110°C"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Other Names"; Value = "FOD817DSDDKR"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Output Type"; Value = "Transistor"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package / Case"; Value = "4-SMD,GullWing"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Description"; Value = "4-Pin Surface Mount Device, Body 6.5 x 4.6 mm, Pitch 2.54 mm"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Reference"; Value = "MDIP 4L"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package URL"; Value = "https://www.fairchildsemi.com/package-drawings/N0/N04C.pdf"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package Version"; Value = "10/2014"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Packaging"; Value = "Digi-Reel®  "; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Rise / Fall Time (Typ)"; Value = "4µs,3µs"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Series"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Standard Package"; Value = "1"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Supplier Device Package"; Value = "4-SMD"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Turn On / Turn Off Time (Typ)"; Value = "-"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Vce Saturation (Max)"; Value = "200mV"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Forward (Vf) (Typ)"; Value = "1.2V"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Isolation"; Value = "5000Vrms"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Voltage - Output (Max)"; Value = "70V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=+3V3 Pin=U2-2
+Added Pin To Net: NetName=NetR1_2 Pin=U2-3
+Added Pin To Net: NetName=GND_ISO Pin=U2-5
+Added Pin To Net: NetName=NetJ2_3 Pin=U2-6
+Added Pin To Net: NetName=VCC_ISO Pin=U2-7
+Added Pin To Net: NetName=VCC_ISO Pin=U2-8
+Added Pin To Net: NetName=VCC_ISO Pin=U3-2
+Added Pin To Net: NetName=NetR5_1 Pin=U3-3
+Added Pin To Net: NetName=GND Pin=U3-5
+Added Pin To Net: NetName=NetC11_2 Pin=U3-6
+Added Pin To Net: NetName=+3V3 Pin=U3-7
+Added Pin To Net: NetName=+3V3 Pin=U3-8
+Added Member To Class: ClassName=Bargraph_64_MCU Member=Component U2 6N137S-P
+Added Member To Class: ClassName=Bargraph_64_MCU Member=Component U3 6N137S-P

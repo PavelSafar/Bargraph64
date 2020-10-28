@@ -1,0 +1,597 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD20\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">28.10.2020</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2:30:23</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:02</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc" class="file"><acronym title="X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc">X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">80</td></tr>
+</table>
+</td>
+</table><a name="IDJXACJ3DIFLFFFCSYPEENIHAOTJTVYGJYRYGBPXNZDLG1XRUSCPVE"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCQZJ2LIZNOYNHGRPN2UG53OB3FMLVZ4ZHGJTF4CISVEVUZ3UZBT">Clearance Constraint (Gap=0.127mm) (OnLayer('Top Layer')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID4YBLMLLZIVQ4CCAKOTMADGBHRLEZGL1OD4BCXIGAQB2O3CX0CRPH">Clearance Constraint (Gap=0.127mm) (OnLayer('Bottom Layer')),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYU4AQUBPW5J2EL2B3IK0GGDWPB0KYVL5B5VWGUILLRUHWUVFPS1P">Clearance Constraint (Gap=0.2mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDSBKYK3IE1DVII2RMZ0J1CXH1HHS0VQKICFG3GEHOUQYO1S0ULAI">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDO2NXVRSXIRQHKOGCZSAA4AB42CSIMYY13GPF05ETU1Y2CCD04UXH">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTCCLRRZYDQIGO5VT15FHD1PQSERM3KY2J2OGHJI4WZ1VSY4VUGLI">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDBX4LQ40HIWNHCJ5Y0ATL550NAOFZ3E12HENQ1CMK0MKXGB5RVANC">Width Constraint (Min=0.152mm) (Max=2.54mm) (Preferred=0.152mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDUJN0ZR1CKUE1HWEDFBQ5LHEA3JJSWP2V5UT4CFHFJLAHS0UI2YNI">Power Plane Connect Rule(Direct Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDFGD3YEXC12MYA0APOQP2JXQZHOALI1QMFQQ1CDK4SLPKGXRYODE">Minimum Annular Ring (Minimum=0.076mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDC0ZQH4CY3QUEPRG0EHF4ATXJ0LEN2IHAMIL5CNNCDL3KRBKGPBHO">Hole Size Constraint (Min=0.2mm) (Max=6.3mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDD2FWBORG0NA3BZNUWO0REROCXB0ORJWKELDTHHNNM1F2W2EUVAYP">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDJ5SUZAKNLMLRPLESZQ50MIE0FINIZZY5MKSBIOMKV3GVOXDTV5UJ">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</a></td>
+<td class="column2">33</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDOP2Q2NRWBY00BXC4NFWBCHIMMFEIRYYCC25EUHM4CEYBHST554MH">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</a></td>
+<td class="column2">7</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDLJQSTMKAGBDBHDEYOKVGACECWI10HKCNH0UY0FKRC2TZLNENC2XN">Silk to Silk (Clearance=0.1mm) (All),(All)</a></td>
+<td class="column2">11</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDUEURFZADORBWK1G5J2BEKI5SVHQT00LRUBHI1DK4PRMXDSMPBPEL">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZLBTPMF10ZXRBNALY3WMSAL4NOXRFE4OM1ZUHYG1GNID3U3FW2ZF">Board Clearance Constraint (Gap=0mm) (All)</a></td>
+<td class="column2">29</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDXDIROSTPCSJDMCWITMB01TXV4KGGORLBEIRIH1EFTT4MZKSBZKWE">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">80</td>
+</tr>
+</table><br><a name="IDJ5SUZAKNLMLRPLESZQ50MIE0FINIZZY5MKSBIOMKV3GVOXDTV5UJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.1mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18905.379mil|Location2.X=18910.566mil|Location1.Y=12293.174mil|Location2.Y=12298.361mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18905.379mil|Location2.X=18910.566mil|Location1.Y=12293.174mil|Location2.Y=12298.361mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.075mm &lt; 0.1mm) Between Pad C6-2(29.5mm,12.3mm) on Bottom Layer And Via (30.45mm,12.313mm) from Top Layer to Bottom Layer [Bottom Solder] Mask Sliver [0.075mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18905.379mil|Location2.X=18910.566mil|Location1.Y=12293.174mil|Location2.Y=12298.361mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18905.379mil|Location2.X=18910.566mil|Location1.Y=12293.174mil|Location2.Y=12298.361mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.075mm &lt; 0.1mm) Between Pad C7-2(29.5mm,12.3mm) on Top Layer And Via (30.45mm,12.313mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.075mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18760.595mil|Location2.X=18765.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18760.595mil|Location2.X=18765.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-1(27.22mm,16.5mm) on Multi-Layer And Pad J3-2(25.95mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18310.595mil|Location2.X=18315.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18310.595mil|Location2.X=18315.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-10(15.79mm,16.5mm) on Multi-Layer And Pad J3-11(14.52mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18360.595mil|Location2.X=18365.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18360.595mil|Location2.X=18365.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-10(15.79mm,16.5mm) on Multi-Layer And Pad J3-9(17.06mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18260.595mil|Location2.X=18265.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18260.595mil|Location2.X=18265.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-11(14.52mm,16.5mm) on Multi-Layer And Pad J3-12(13.25mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18210.595mil|Location2.X=18215.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18210.595mil|Location2.X=18215.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-12(13.25mm,16.5mm) on Multi-Layer And Pad J3-13(11.98mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18160.595mil|Location2.X=18165.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18160.595mil|Location2.X=18165.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-13(11.98mm,16.5mm) on Multi-Layer And Pad J3-14(10.71mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18110.595mil|Location2.X=18115.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18110.595mil|Location2.X=18115.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-14(10.71mm,16.5mm) on Multi-Layer And Pad J3-15(9.44mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18060.595mil|Location2.X=18065.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18060.595mil|Location2.X=18065.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-15(9.44mm,16.5mm) on Multi-Layer And Pad J3-16(8.17mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18710.595mil|Location2.X=18715.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18710.595mil|Location2.X=18715.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-2(25.95mm,16.5mm) on Multi-Layer And Pad J3-3(24.68mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18660.595mil|Location2.X=18665.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18660.595mil|Location2.X=18665.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-3(24.68mm,16.5mm) on Multi-Layer And Pad J3-4(23.41mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18610.595mil|Location2.X=18615.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18610.595mil|Location2.X=18615.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-4(23.41mm,16.5mm) on Multi-Layer And Pad J3-5(22.14mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18560.595mil|Location2.X=18565.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18560.595mil|Location2.X=18565.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-5(22.14mm,16.5mm) on Multi-Layer And Pad J3-6(20.87mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18510.595mil|Location2.X=18515.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18510.595mil|Location2.X=18515.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-6(20.87mm,16.5mm) on Multi-Layer And Pad J3-7(19.6mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18460.595mil|Location2.X=18465.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18460.595mil|Location2.X=18465.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-7(19.6mm,16.5mm) on Multi-Layer And Pad J3-8(18.33mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18410.595mil|Location2.X=18415.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18410.595mil|Location2.X=18415.782mil|Location1.Y=12456.536mil|Location2.Y=12461.723mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J3-8(18.33mm,16.5mm) on Multi-Layer And Pad J3-9(17.06mm,16.5mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18759.415mil|Location2.X=18764.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18759.415mil|Location2.X=18764.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-1(27.19mm,11.4mm) on Multi-Layer And Pad J4-2(25.92mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18309.414mil|Location2.X=18314.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18309.414mil|Location2.X=18314.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-10(15.76mm,11.4mm) on Multi-Layer And Pad J4-11(14.49mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18359.414mil|Location2.X=18364.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18359.414mil|Location2.X=18364.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-10(15.76mm,11.4mm) on Multi-Layer And Pad J4-9(17.03mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18259.415mil|Location2.X=18264.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18259.415mil|Location2.X=18264.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-11(14.49mm,11.4mm) on Multi-Layer And Pad J4-12(13.22mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18209.415mil|Location2.X=18214.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18209.415mil|Location2.X=18214.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-12(13.22mm,11.4mm) on Multi-Layer And Pad J4-13(11.95mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18159.415mil|Location2.X=18164.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18159.415mil|Location2.X=18164.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-13(11.95mm,11.4mm) on Multi-Layer And Pad J4-14(10.68mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18109.414mil|Location2.X=18114.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18109.414mil|Location2.X=18114.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-14(10.68mm,11.4mm) on Multi-Layer And Pad J4-15(9.41mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18059.414mil|Location2.X=18064.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18059.414mil|Location2.X=18064.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-15(9.41mm,11.4mm) on Multi-Layer And Pad J4-16(8.14mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18709.415mil|Location2.X=18714.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18709.415mil|Location2.X=18714.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-2(25.92mm,11.4mm) on Multi-Layer And Pad J4-3(24.65mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18659.415mil|Location2.X=18664.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18659.415mil|Location2.X=18664.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-3(24.65mm,11.4mm) on Multi-Layer And Pad J4-4(23.38mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18609.415mil|Location2.X=18614.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18609.415mil|Location2.X=18614.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-4(23.38mm,11.4mm) on Multi-Layer And Pad J4-5(22.11mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18559.415mil|Location2.X=18564.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18559.415mil|Location2.X=18564.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-5(22.11mm,11.4mm) on Multi-Layer And Pad J4-6(20.84mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18509.415mil|Location2.X=18514.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18509.415mil|Location2.X=18514.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-6(20.84mm,11.4mm) on Multi-Layer And Pad J4-7(19.57mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18459.415mil|Location2.X=18464.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18459.415mil|Location2.X=18464.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-7(19.57mm,11.4mm) on Multi-Layer And Pad J4-8(18.3mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18409.415mil|Location2.X=18414.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18409.415mil|Location2.X=18414.602mil|Location1.Y=12255.749mil|Location2.Y=12260.936mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.051mm &lt; 0.1mm) Between Pad J4-8(18.3mm,11.4mm) on Multi-Layer And Pad J4-9(17.03mm,11.4mm) on Multi-Layer [Top Solder] Mask Sliver [0.051mm] / [Bottom Solder] Mask Sliver [0.051mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19560.399mil|Location2.X=19565.586mil|Location1.Y=12323.194mil|Location2.Y=12328.381mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19560.399mil|Location2.X=19565.586mil|Location1.Y=12323.194mil|Location2.Y=12328.381mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.05mm &lt; 0.1mm) Between Pad R36-1(47mm,13.7mm) on Top Layer And Via (46.9mm,12.9mm) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [0.05mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDOP2Q2NRWBY00BXC4NFWBCHIMMFEIRYYCC25EUHM4CEYBHST554MH"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19832.488mil|Location2.X=19836.113mil|Location1.Y=11886.417mil|Location2.Y=11890.042mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19832.488mil|Location2.X=19836.113mil|Location1.Y=11886.417mil|Location2.Y=11890.042mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Arc (53.6mm,1.8mm) on Bottom Overlay And Pad SB1-1(54mm,1.6mm) on Bottom Layer [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19554.776mil|Location2.X=19559.964mil|Location1.Y=11961.021mil|Location2.Y=11966.208mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19554.776mil|Location2.X=19559.964mil|Location1.Y=11961.021mil|Location2.Y=11966.208mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.086mm &lt; 0.1mm) Between Pad C5-1(46.25mm,4.4mm) on Multi-Layer And Track (46.9mm,3.45mm)(46.9mm,6.05mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.086mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19711.414mil|Location2.X=19718.412mil|Location1.Y=12231.916mil|Location2.Y=12238.901mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19711.414mil|Location2.X=19718.412mil|Location1.Y=12231.916mil|Location2.Y=12238.901mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.057mm &lt; 0.1mm) Between Pad Free-19(50.4mm,9.8mm) on Multi-Layer And Text "D6" (50.134mm,10.7mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.057mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19892.423mil|Location2.X=19897.61mil|Location1.Y=11851.735mil|Location2.Y=11856.922mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19892.423mil|Location2.X=19897.61mil|Location1.Y=11851.735mil|Location2.Y=11856.922mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.05mm &lt; 0.1mm) Between Pad SB1-2(55.3mm,1.6mm) on Bottom Layer And Text "SB1" (56.533mm,0.2mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0.05mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18900.297mil|Location2.X=18905.484mil|Location1.Y=12411.869mil|Location2.Y=12417.056mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18900.297mil|Location2.X=18905.484mil|Location1.Y=12411.869mil|Location2.Y=12417.056mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.063mm &lt; 0.1mm) Between Pad SB3-1(30.257mm,14.896mm) on Top Layer And Text "SB3" (30.8mm,15.434mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.063mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18951.478mil|Location2.X=18956.665mil|Location1.Y=12411.869mil|Location2.Y=12417.056mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18951.478mil|Location2.X=18956.665mil|Location1.Y=12411.869mil|Location2.Y=12417.056mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.063mm &lt; 0.1mm) Between Pad SB4-1(31.557mm,14.896mm) on Top Layer And Text "SB4" (32.1mm,15.434mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.063mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19941.101mil|Location2.X=19944.726mil|Location1.Y=12023.385mil|Location2.Y=12027.009mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19941.101mil|Location2.X=19944.726mil|Location1.Y=12023.385mil|Location2.Y=12027.009mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad U3-6(55.9mm,6.19mm) on Bottom Layer And Text "C2" (56.603mm,4.543mm) on Bottom Overlay [Bottom Overlay] to [Bottom Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDLJQSTMKAGBDBHDEYOKVGACECWI10HKCNH0UY0FKRC2TZLNENC2XN"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.1mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19014.002mil|Location2.X=19019.189mil|Location1.Y=12437.803mil|Location2.Y=12442.99mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19014.002mil|Location2.X=19019.189mil|Location1.Y=12437.803mil|Location2.Y=12442.99mil|Absolute=True">Silk To Silk Clearance Constraint: (0.082mm &lt; 0.1mm) Between Arc (33.075mm,15.7mm) on Top Overlay And Text "IC1" (32.734mm,16.1mm) on Top Overlay Silk Text to Silk Clearance [0.082mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19633.075mil|Location2.X=19638.262mil|Location1.Y=12021.522mil|Location2.Y=12026.709mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19633.075mil|Location2.X=19638.262mil|Location1.Y=12021.522mil|Location2.Y=12026.709mil|Absolute=True">Silk To Silk Clearance Constraint: (0.03mm &lt; 0.1mm) Between Arc (44.5mm,4.4mm) on Top Overlay And Text "C5" (48.834mm,5.3mm) on Top Overlay Silk Text to Silk Clearance [0.03mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19911.433mil|Location2.X=19916.621mil|Location1.Y=12335.911mil|Location2.Y=12341.098mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19911.433mil|Location2.X=19916.621mil|Location1.Y=12335.911mil|Location2.Y=12341.098mil|Absolute=True">Silk To Silk Clearance Constraint: (0.057mm &lt; 0.1mm) Between Arc (55.75mm,13mm) on Top Overlay And Text "U2" (55.034mm,13.5mm) on Top Overlay Silk Text to Silk Clearance [0.057mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19969.543mil|Location2.X=19973.167mil|Location1.Y=12009.046mil|Location2.Y=12012.671mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19969.543mil|Location2.X=19973.167mil|Location1.Y=12009.046mil|Location2.Y=12012.671mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "C2" (56.603mm,4.543mm) on Bottom Overlay And Track (57.25mm,7.7mm)(57.25mm,2.62mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19608.958mil|Location2.X=19614.145mil|Location1.Y=12536.282mil|Location2.Y=12541.469mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19608.958mil|Location2.X=19614.145mil|Location1.Y=12536.282mil|Location2.Y=12541.469mil|Absolute=True">Silk To Silk Clearance Constraint: (0.025mm &lt; 0.1mm) Between Text "D3" (49.066mm,17.6mm) on Bottom Overlay And Track (47.6mm,18.6mm)(48.6mm,18.6mm) on Bottom Overlay Silk Text to Silk Clearance [0.025mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19372.216mil|Location2.X=19375.841mil|Location1.Y=12555.862mil|Location2.Y=12559.487mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19372.216mil|Location2.X=19375.841mil|Location1.Y=12555.862mil|Location2.Y=12559.487mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "R18" (42.1mm,18.1mm) on Top Overlay And Track (38.54mm,19.055mm)(46.46mm,19.055mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19495.576mil|Location2.X=19499.201mil|Location1.Y=12555.862mil|Location2.Y=12559.487mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19495.576mil|Location2.X=19499.201mil|Location1.Y=12555.862mil|Location2.Y=12559.487mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "R33" (45.234mm,18.1mm) on Top Overlay And Track (38.54mm,19.055mm)(46.46mm,19.055mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19543.248mil|Location2.X=19546.872mil|Location1.Y=12555.869mil|Location2.Y=12559.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19543.248mil|Location2.X=19546.872mil|Location1.Y=12555.869mil|Location2.Y=12559.494mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "R33" (45.234mm,18.1mm) on Top Overlay And Track (46.46mm,19.055mm)(46.46mm,21.745mm) on Top Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20012.61mil|Location2.X=20016.234mil|Location1.Y=12673.283mil|Location2.Y=12676.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20012.61mil|Location2.X=20016.234mil|Location1.Y=12673.283mil|Location2.Y=12676.908mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "R34" (58.366mm,21.1mm) on Bottom Overlay And Track (0mm,22mm)(80mm,22mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19878.751mil|Location2.X=19882.376mil|Location1.Y=12673.283mil|Location2.Y=12676.908mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19878.751mil|Location2.X=19882.376mil|Location1.Y=12673.283mil|Location2.Y=12676.908mil|Absolute=True">Silk To Silk Clearance Constraint: (Collision &lt; 0.1mm) Between Text "R40" (54.966mm,21.1mm) on Bottom Overlay And Track (0mm,22mm)(80mm,22mm) on Bottom Overlay Silk Text to Silk Clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19923.909mil|Location2.X=19929.096mil|Location1.Y=11812.468mil|Location2.Y=11817.655mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19923.909mil|Location2.X=19929.096mil|Location1.Y=11812.468mil|Location2.Y=11817.655mil|Absolute=True">Silk To Silk Clearance Constraint: (0.045mm &lt; 0.1mm) Between Text "SB1" (56.533mm,0.2mm) on Bottom Overlay And Track (0mm,0mm)(80mm,0mm) on Bottom Overlay Silk Text to Silk Clearance [0.045mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZLBTPMF10ZXRBNALY3WMSAL4NOXRFE4OM1ZUHYG1GNID3U3FW2ZF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Board Clearance Constraint (Gap=0mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19463.942mil|Location2.X=19473.066mil|Location1.Y=11807.445mil|Location2.Y=11816.569mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19463.942mil|Location2.X=19473.066mil|Location1.Y=11807.445mil|Location2.Y=11816.569mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.05mm &lt; 0.2mm) Between Arc (44.5mm,4.4mm) on Top Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19658.293mil|Location2.X=19664.542mil|Location1.Y=12677.09mil|Location2.Y=12683.339mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19658.293mil|Location2.X=19664.542mil|Location1.Y=12677.09mil|Location2.Y=12683.339mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Arc (49.4mm,21.9mm) on Bottom Overlay And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17711.973mil|Location2.X=17721.097mil|Location1.Y=11849.769mil|Location2.Y=11858.893mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17711.973mil|Location2.X=17721.097mil|Location1.Y=11849.769mil|Location2.Y=11858.893mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mm &lt; 0.2mm) Between Area Fill (0mm,0mm) (5.6mm,1.1mm) on Bottom Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17711.974mil|Location2.X=17721.098mil|Location1.Y=11806.461mil|Location2.Y=11815.585mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17711.974mil|Location2.X=17721.098mil|Location1.Y=11806.461mil|Location2.Y=11815.585mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mm &lt; 0.2mm) Between Area Fill (0mm,0mm) (5.6mm,1.1mm) on Top Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12004.749mil|Location2.Y=12010.999mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12004.749mil|Location2.Y=12010.999mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Area Fill (0mm,3mm) (1.1mm,5.6mm) on Bottom Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17711.973mil|Location2.X=17721.097mil|Location1.Y=12026.934mil|Location2.Y=12036.058mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17711.973mil|Location2.X=17721.097mil|Location1.Y=12026.934mil|Location2.Y=12036.058mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mm &lt; 0.2mm) Between Area Fill (0mm,3mm) (1.1mm,5.6mm) on Top Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12563.805mil|Location2.Y=12570.054mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12563.805mil|Location2.Y=12570.054mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Area Fill (-2.25mm,18.65mm) (3.35mm,19.75mm) on Bottom Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12587.426mil|Location2.Y=12593.675mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12587.426mil|Location2.Y=12593.675mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Area Fill (-2.25mm,18.65mm) (3.35mm,19.75mm) on Top Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17830.083mil|Location2.X=17839.207mil|Location1.Y=12672.603mil|Location2.Y=12681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17830.083mil|Location2.X=17839.207mil|Location1.Y=12672.603mil|Location2.Y=12681.727mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mm &lt; 0.2mm) Between Area Fill (3.75mm,20.15mm) (4.85mm,22.75mm) on Bottom Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17830.084mil|Location2.X=17839.208mil|Location1.Y=12672.603mil|Location2.Y=12681.727mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17830.084mil|Location2.X=17839.208mil|Location1.Y=12672.603mil|Location2.Y=12681.727mil|Absolute=True">Board Outline Clearance(Outline Edge): (0mm &lt; 0.2mm) Between Area Fill (3.75mm,20.15mm) (4.85mm,22.75mm) on Top Layer And Board Edge </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18116.171mil|Location2.X=18125.295mil|Location1.Y=11808.949mil|Location2.Y=11818.073mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=18116.171mil|Location2.X=18125.295mil|Location1.Y=11808.949mil|Location2.Y=11818.073mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.126mm &lt; 0.2mm) Between Board Edge And Text "PAVEL SAFAR 2020
+VU-METER DRIVER V1.0" (10.267mm,0.126mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19969.316mil|Location2.X=19975.566mil|Location1.Y=12675.023mil|Location2.Y=12681.272mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19969.316mil|Location2.X=19975.566mil|Location1.Y=12675.023mil|Location2.Y=12681.272mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Text "R34" (58.366mm,21.1mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19835.458mil|Location2.X=19841.707mil|Location1.Y=12675.023mil|Location2.Y=12681.272mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19835.458mil|Location2.X=19841.707mil|Location1.Y=12675.023mil|Location2.Y=12681.272mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Text "R40" (54.966mm,21.1mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17971.168mil|Location2.X=17980.292mil|Location1.Y=11809.417mil|Location2.Y=11818.541mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17971.168mil|Location2.X=17980.292mil|Location1.Y=11809.417mil|Location2.Y=11818.541mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.2mm) Between Board Edge And Text "R8" (6.734mm,0.3mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19858.311mil|Location2.X=19867.435mil|Location1.Y=11807.448mil|Location2.Y=11816.572mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19858.311mil|Location2.X=19867.435mil|Location1.Y=11807.448mil|Location2.Y=11816.572mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.05mm &lt; 0.2mm) Between Board Edge And Text "SB1" (56.533mm,0.2mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19116.843mil|Location2.X=19125.967mil|Location1.Y=12669.648mil|Location2.Y=12678.772mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19116.843mil|Location2.X=19125.967mil|Location1.Y=12669.648mil|Location2.Y=12678.772mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.2mm) Between Board Edge And Text "SB5" (35.834mm,20.9mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12240.97mil|Location2.Y=12247.219mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=17713.411mil|Location2.X=17719.66mil|Location1.Y=12240.97mil|Location2.Y=12247.219mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (0mm,0mm)(0mm,22mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19288.214mil|Location2.X=19294.463mil|Location1.Y=11807.899mil|Location2.Y=11814.148mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19288.214mil|Location2.X=19294.463mil|Location1.Y=11807.899mil|Location2.Y=11814.148mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (0mm,0mm)(80mm,0mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19288.214mil|Location2.X=19294.463mil|Location1.Y=12674.041mil|Location2.Y=12680.29mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19288.214mil|Location2.X=19294.463mil|Location1.Y=12674.041mil|Location2.Y=12680.29mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (0mm,22mm)(80mm,22mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19229.296mil|Location2.X=19238.42mil|Location1.Y=12669.552mil|Location2.Y=12678.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19229.296mil|Location2.X=19238.42mil|Location1.Y=12669.552mil|Location2.Y=12678.676mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.155mm &lt; 0.2mm) Between Board Edge And Track (38.54mm,19.055mm)(38.54mm,21.745mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19229.296mil|Location2.X=19238.42mil|Location1.Y=12669.552mil|Location2.Y=12678.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19229.296mil|Location2.X=19238.42mil|Location1.Y=12669.552mil|Location2.Y=12678.676mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.155mm &lt; 0.2mm) Between Board Edge And Track (38.54mm,21.745mm)(46.46mm,21.745mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19541.107mil|Location2.X=19550.231mil|Location1.Y=12669.552mil|Location2.Y=12678.676mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19541.107mil|Location2.X=19550.231mil|Location1.Y=12669.552mil|Location2.Y=12678.676mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.155mm &lt; 0.2mm) Between Board Edge And Track (46.46mm,19.055mm)(46.46mm,21.745mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19709.474mil|Location2.X=19715.723mil|Location1.Y=12674.4mil|Location2.Y=12680.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19709.474mil|Location2.X=19715.723mil|Location1.Y=12674.4mil|Location2.Y=12680.649mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (50.7mm,20.64mm)(50.7mm,21.91mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19859.474mil|Location2.X=19865.723mil|Location1.Y=12674.4mil|Location2.Y=12680.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=19859.474mil|Location2.X=19865.723mil|Location1.Y=12674.4mil|Location2.Y=12680.649mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (50.7mm,21.91mm)(58.32mm,21.91mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20009.474mil|Location2.X=20015.723mil|Location1.Y=12674.4mil|Location2.Y=12680.649mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20009.474mil|Location2.X=20015.723mil|Location1.Y=12674.4mil|Location2.Y=12680.649mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (58.32mm,20.64mm)(58.32mm,21.91mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.997mil|Location2.X=20032.121mil|Location1.Y=11809.414mil|Location2.Y=11818.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.997mil|Location2.X=20032.121mil|Location1.Y=11809.414mil|Location2.Y=11818.538mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.2mm) Between Board Edge And Track (58.7mm,0.25mm)(58.7mm,2.25mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.997mil|Location2.X=20032.121mil|Location1.Y=11809.414mil|Location2.Y=11818.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20022.997mil|Location2.X=20032.121mil|Location1.Y=11809.414mil|Location2.Y=11818.538mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.2mm) Between Board Edge And Track (58.7mm,0.25mm)(62.3mm,0.25mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20164.729mil|Location2.X=20173.853mil|Location1.Y=11809.414mil|Location2.Y=11818.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20164.729mil|Location2.X=20173.853mil|Location1.Y=11809.414mil|Location2.Y=11818.538mil|Absolute=True">Board Outline Clearance(Outline Edge): (0.15mm &lt; 0.2mm) Between Board Edge And Track (62.3mm,0.25mm)(62.3mm,2.25mm) on Top Overlay </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20863.017mil|Location2.X=20869.266mil|Location1.Y=12240.97mil|Location2.Y=12247.219mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=X:\github\Altium_Git\Bargraph64\HW\Bargraph_64_MCU\Bargraph_64_MCU.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=20863.017mil|Location2.X=20869.266mil|Location1.Y=12240.97mil|Location2.Y=12247.219mil|Absolute=True">Board Outline Clearance(Outline Edge): (Collision &lt; 0.2mm) Between Board Edge And Track (80mm,0mm)(80mm,22mm) on Bottom Overlay </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>

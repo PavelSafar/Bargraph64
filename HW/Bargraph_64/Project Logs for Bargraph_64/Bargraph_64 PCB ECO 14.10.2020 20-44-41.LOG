@@ -1,0 +1,13 @@
+Removed Pin From Net: NetName=NetJ1_13 Pin=J1-13
+Removed Pin From Net: NetName=NetJ1_14 Pin=J1-14
+Removed Pin From Net: NetName=NetJ1_15 Pin=J1-15
+Removed Pin From Net: NetName=NetJ1_16 Pin=J1-16
+Added Pin To Net: NetName=NetJ1_16 Pin=J1-13
+Added Pin To Net: NetName=NetJ1_15 Pin=J1-14
+Added Pin To Net: NetName=NetJ1_14 Pin=J1-15
+Added Pin To Net: NetName=NetJ1_13 Pin=J1-16
+Change Net Name : Old Net Name=NetJ1_13 New Net Name=NetJ1_16
+Change Net Name : Old Net Name=NetJ1_14 New Net Name=NetJ1_15
+Change Net Name : Old Net Name=NetJ1_15 New Net Name=NetJ1_14
+Change Net Name : Old Net Name=NetJ1_16 New Net Name=NetJ1_13
+Added Room: Name=Bargraph_64

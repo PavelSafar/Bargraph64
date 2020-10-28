@@ -1,0 +1,12 @@
+Added Component: Designator=R41(RESC1608X55X30ML20T20)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Panasonic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "ERA3AEB102V"; VariantName = "[No Variations]"
+Added Component: Designator=R42(RESC1608X55X30ML20T20)
+Add component (AddParameter): Name = "Manufacturer"; Value = "Panasonic"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Part Number"; Value = "ERA3AEB102V"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetD3_1 Pin=R41-1
+Added Pin To Net: NetName=+3V3 Pin=R41-2
+Added Pin To Net: NetName=NetD4_1 Pin=R42-1
+Added Pin To Net: NetName=+3V3 Pin=R42-2
+Added Member To Class: ClassName=Bargraph_64_MCU Member=Component R41 330R 0603
+Added Member To Class: ClassName=Bargraph_64_MCU Member=Component R42 330R 0603

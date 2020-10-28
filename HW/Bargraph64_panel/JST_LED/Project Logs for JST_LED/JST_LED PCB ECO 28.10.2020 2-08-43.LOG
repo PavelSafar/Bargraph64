@@ -1,0 +1,4 @@
+Added Pin To Net: NetName=NetP1_2 Pin=P1-2
+Added Pin To Net: NetName=NetP1_2 Pin=R1-2
+Added Net: Name=NetP1_2
+Added Room: Name=JST_LED

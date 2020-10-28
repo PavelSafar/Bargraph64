@@ -1,0 +1,21 @@
+!SESSION 2020-10-27 18:37:55.177 -----------------------------------------------
+eclipse.buildId=Version 1.4.0
+java.version=1.8.0_252
+java.vendor=AdoptOpenJDK
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=cs_CZ
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -data X:\github\Altium_Git\Bargraph64\SW
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-10-27 18:38:06.552
+!MESSAGE Log4j initialized with config file X:\github\Altium_Git\Bargraph64\SW\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-10-27 18:38:10.431
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-10-27 18:38:11.279
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-10-27 19:58:42.154
+!MESSAGE Indexed 'Bargraph64' (0 sources, 0 headers) in 0.002 sec: 0 declarations; 0 references; 0 unresolved inclusions; 0 syntax errors; 0 unresolved names (0%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-10-27 19:58:50.239
+!MESSAGE Indexed 'Bargraph64' (25 sources, 80 headers) in 4.04 sec: 3,900 declarations; 15,095 references; 0 unresolved inclusions; 1 syntax errors; 4 unresolved names (0.021%)
